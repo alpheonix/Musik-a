@@ -66,60 +66,7 @@ import com.axt.esgi.esgi4a2020.data.model.Tracks
             DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         )
 
-        val itemTouchHelper = ItemTouchHelper(
-            object : ItemTouchHelper.SimpleCallback(
-                 ItemTouchHelper.DOWN or ItemTouchHelper.UP,
-                ItemTouchHelper.LEFT
-            ) {
-                override fun onMove(
-                    recyclerView: RecyclerView,
-                    viewHolder: RecyclerView.ViewHolder,
-                    target: RecyclerView.ViewHolder
-                ): Boolean {
-                    recyclerView.adapter?.notifyItemMoved(
-                        viewHolder.adapterPosition,
-                        target.adapterPosition
-                    )
-                    return false
-                }
 
-                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                    albumsAdapter.removeItem(viewHolder.adapterPosition)
-                }
-
-                override fun onChildDraw(
-                    c: Canvas,
-                    recyclerView: RecyclerView,
-                    viewHolder: RecyclerView.ViewHolder,
-                    dX: Float,
-                    dY: Float,
-                    actionState: Int,
-                    isCurrentlyActive: Boolean
-                ) {
-                    val itemView = viewHolder.itemView
-                    if(dX>0){
-                        background.setBounds(itemView.left,itemView.top,dX.toInt(),itemView.bottom)
-                    }else{
-                        background.setBounds(itemView.right +dX.toInt(),itemView.top,itemView.right,itemView.bottom)
-
-                    }
-
-                    background.draw(c)
-                    
-                    super.onChildDraw(
-                        c,
-                        recyclerView,
-                        viewHolder,
-                        dX,
-                        dY,
-                        actionState,
-                        isCurrentlyActive
-                    )
-                }
-
-            }
-        )
-        itemTouchHelper.attachToRecyclerView(photosRecyclerView)
 
         albumsAdapter.listener = this::navigateToDetail
     }

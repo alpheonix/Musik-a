@@ -1,19 +1,24 @@
 package com.axt.esgi.esgi4a2020.recycler
 
 
+import android.annotation.SuppressLint
+import android.app.Notification.DEFAULT_ALL
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.media.AudioManager
 import android.media.MediaPlayer
-import android.net.Uri
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.RecyclerView
+import com.axt.esgi.esgi4a2020.Myapp
 import com.axt.esgi.esgi4a2020.R
 import com.axt.esgi.esgi4a2020.data.model.Tracks
-import com.axt.esgi.esgi4a2020.recycler.detail.AlbumDetailFragment
-import java.io.IOException
 
 
 class TracksAdapter : RecyclerView.Adapter<TracksAdapter.PhotoViewHolder>() {
@@ -25,14 +30,22 @@ class TracksAdapter : RecyclerView.Adapter<TracksAdapter.PhotoViewHolder>() {
         }
 
     var listener: ((Tracks) -> Unit)? = null
-    var mediaPlayer = MediaPlayer()
 
+    lateinit var notifManager :NotificationManager
 
 
     override fun getItemCount() = data.size
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
+
+
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_track, parent, false)
+            Myapp.createPlayer(data)
+
+
+
+
         return PhotoViewHolder(view)
     }
     fun removeItem(position: Int) {
@@ -50,25 +63,11 @@ class TracksAdapter : RecyclerView.Adapter<TracksAdapter.PhotoViewHolder>() {
             timeTv.text = "${track.duration} secondes"
             timeTv.setOnClickListener { listener?.invoke(track) }
         }
-
         holder.itemView.setOnClickListener{
-            if (mediaPlayer.isPlaying){
-                mediaPlayer.stop()
-                mediaPlayer.reset()
-                mediaPlayer.apply {
-                    setAudioStreamType(AudioManager.STREAM_MUSIC)
-                    setDataSource(track.preview)
-                    prepare() // might take long! (for buffering, etc)
-                    start()
-                }
-            }else {
-                mediaPlayer.apply {
-                    setAudioStreamType(AudioManager.STREAM_MUSIC)
-                    setDataSource(track.preview)
-                    prepare() // might take long! (for buffering, etc)
-                    start()
-                }
-            }
+
+                Myapp.play(position)
+
+
 
             Log.d("onclick",track.title)
         }
