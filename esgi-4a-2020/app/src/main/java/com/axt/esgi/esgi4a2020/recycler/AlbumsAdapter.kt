@@ -36,15 +36,19 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.PhotoViewHolder>() {
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val photo = data[position]
 
-        with(holder) {
-            titleTv.text = photo.title
-            Glide.with(itemView)
-                .load(photo.coverSmall)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(thumbnailImv)
 
-            itemView.setOnClickListener { listener?.invoke(photo) }
-        }
+            with(holder) {
+                titleTv.text = photo.title
+                Glide.with(itemView)
+                    .load(photo.coverSmall)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(thumbnailImv)
+
+                itemView.setOnClickListener { listener?.invoke(photo) }
+            }
+        
+
+       
 
     }
 

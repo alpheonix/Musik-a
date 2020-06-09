@@ -1,6 +1,5 @@
 package com.axt.esgi.esgi4a2020.recycler
 
-import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -10,16 +9,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.axt.esgi.esgi4a2020.R
 import com.axt.esgi.esgi4a2020.common.showError
 import com.axt.esgi.esgi4a2020.data.api.DeezerProvider
-import com.axt.esgi.esgi4a2020.data.api.Listener
 import com.axt.esgi.esgi4a2020.data.api.Listener2
 import com.axt.esgi.esgi4a2020.data.model.Album
-import com.axt.esgi.esgi4a2020.data.model.Tracks
 
 
 /**
@@ -50,6 +46,7 @@ import com.axt.esgi.esgi4a2020.data.model.Tracks
     private fun getAlbums() {
         DeezerProvider.getAlbum(object : Listener2<List<Album>> {
             override fun onSuccess(data: List<Album>) {
+
                 albumsAdapter.data = data as ArrayList<Album>
             }
 

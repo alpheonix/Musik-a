@@ -4,7 +4,7 @@ data class Tracks(
     val id: String,
     val title: String,
     val preview: String,
-    val duration: Int
+    val duration: Int 
 
 
 )
