@@ -1,8 +1,9 @@
 package com.axt.esgi.esgi4a2020
 
-import android.R
+
 import android.app.Application
 import android.app.PendingIntent
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
@@ -25,11 +26,21 @@ class Myapp : Application() {
         lateinit var builder : NotificationCompat.Builder
         fun createNotif(context: Context, position: Int){
 
+            val previousintent = Intent(context,PreviousNotificationReciver::class.java)
+            previousintent.putExtra("action","previous")
+            val    previousPendingintent = PendingIntent.getBroadcast(context,0,previousintent,PendingIntent.FLAG_UPDATE_CURRENT)
 
-
-
-            val notificationLayout = RemoteViews("com.axt.esgi.esgi4a2020", R.layout.ativity_notification)
+            val playintent = Intent(context,PlayNotificationReciver::class.java)
+            playintent.putExtra("action","play")
+            val    playPendingintent = PendingIntent.getBroadcast(context,0,playintent,PendingIntent.FLAG_UPDATE_CURRENT)
+            
+            val nextintent = Intent(context,NextNotificationReciver::class.java)
+            nextintent.putExtra("action","next")
+            val    nextPendingintent = PendingIntent.getBroadcast(context,0,nextintent,PendingIntent.FLAG_UPDATE_CURRENT)
+            
+            val notificationLayout = RemoteViews("com.axt.esgi.esgi4a2020", R.layout.activity_notification)
                 notificationLayout.setTextViewText(R.id.notification_title,player.tracks[position].title)
+            
 
             builder = NotificationCompat.Builder(context, "CHANNEL_ID")
                 .setSmallIcon(R.drawable.next)
@@ -37,11 +48,14 @@ class Myapp : Application() {
                  .setStyle(NotificationCompat.DecoratedCustomViewStyle())
                  .setContentTitle(player.tracks[position].title)
                  .setContent(notificationLayout)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                // Set the intent that will fire when the user taps the notification
+                .setSound(null)
+                
+                 .setOngoing(true)
 
-                 .addAction(R.drawable.ic_launcher_background,"Toast",actionIntent)
-                 .setOngoing(false)
+            notificationLayout.setOnClickPendingIntent(R.id.notif_play_button,playPendingintent)
+            notificationLayout.setOnClickPendingIntent(R.id.notif_previous_button,previousPendingintent)
+            notificationLayout.setOnClickPendingIntent(R.id.notif_next_button,nextPendingintent)
+            
 
             with(NotificationManagerCompat.from(context)) {
                 // notificationId is a unique int for each notification that you must define
@@ -122,7 +136,6 @@ class Myapp : Application() {
                 mediaPlayer.start()
             }
         }
-
 
     }
 }

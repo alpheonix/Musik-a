@@ -56,7 +56,6 @@ object DeezerProvider {
                 call: Call<AlbumsResponseDTO>,
                 response: Response<AlbumsResponseDTO>
             ) {
-                Log.d("test",response.body().toString())
                 response.body()?.let { albumsResponseDTO ->
                     val photos = AlbumsResponseMapper().map(albumsResponseDTO)
                     listener.onSuccess(photos)
@@ -66,7 +65,6 @@ object DeezerProvider {
     }
 
     fun getTracks(albumId: Int, listener: Listener<TracksResponseDTO>) {
-        Log.d("tele",albumId.toString())
         service.getTracks(albumId).enqueue(object : Callback<TracksResponseDTO>{
             override fun onFailure(call: Call<TracksResponseDTO>, t: Throwable) {
                 listener.onError(t)

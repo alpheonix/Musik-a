@@ -78,11 +78,6 @@ class TracksAdapter : RecyclerView.Adapter<TracksAdapter.PhotoViewHolder>() {
                     Myapp.createNotif(holder.itemView.context,position)
 
                 }
-
-
-
-
-            Log.d("onclick",track.title)
         }
 
     }

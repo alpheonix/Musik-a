@@ -64,8 +64,6 @@ class AlbumDetailFragment : Fragment() {
         }
         photosRecyclerView = view.findViewById(R.id.tracks_rcv)
 
-        Log.d("title",args.photoId.toString())
-        Log.d("cover",args.coverMedium)
         updateInfo(args.title,args.coverMedium,args.releaseDate)
         getTracks()
         initRecyclerView()

@@ -7,4 +7,6 @@
     <string name="musik_a">Musik’a</string>
     <string name="channel_name">Channel name</string>
     <string name="channel_description">Channel desc</string>
+    <string name="todo">TODO</string>
+    <string name="text">text</string>
 </resources>

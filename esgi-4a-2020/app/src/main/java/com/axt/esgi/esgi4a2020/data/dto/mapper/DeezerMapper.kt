@@ -20,7 +20,6 @@ class AlbumsResponseMapper {
 
 class TracklMapper {
     fun map(trackDetail: TracksResponseDTO): List<Tracks> {
-        Log.d("mapper",trackDetail.toString())
         if(trackDetail.data != null){
             val trackListDTO = trackDetail.data
 

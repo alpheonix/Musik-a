@@ -20,12 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".NotificationReciver"  android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.INPUT_METHOD_CHANGED" />
-            </intent-filter>
-        </receiver>
+        <receiver android:name=".PreviousNotificationReciver"/>
+        <receiver android:name=".PlayNotificationReciver"/>
+        <receiver android:name=".NextNotificationReciver"/>
     </application>
 
 </manifest>
