@@ -18,64 +18,34 @@
 
       <ImageView
           android:id="@+id/album_detail_imv"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
+          android:layout_width="match_parent"
+          android:layout_height="300dp"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
 
-
-
-      <TextView
-          android:id="@+id/photo_detail_name_tv"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="20dp"
-          android:layout_marginEnd="20dp"
-          android:gravity="end"
-          android:textSize="14sp"
-          android:textStyle="bold"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@id/album_detail_imv"
-          tools:text="Nom du photographe" />
-
       <TextView
           android:id="@+id/album_detail_title_tv"
-          android:layout_width="0dp"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="20dp"
-          android:layout_marginEnd="20dp"
+          android:layout_marginTop="10dp"
           android:textSize="16sp"
           android:textStyle="bold"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@id/photo_detail_name_tv"
+          app:layout_constraintTop_toBottomOf="@id/album_detail_imv"
           tools:text="Londres - Millenium Bridge" />
 
       <TextView
-          android:id="@+id/photo_detail_description_tv"
-          android:layout_width="0dp"
+          android:id="@+id/album_detail_date_tv"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="5dp"
-          android:layout_marginEnd="20dp"
+          android:layout_marginTop="10dp"
+          android:textSize="12sp"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@id/album_detail_title_tv"
-          tools:text="Salut à tous,\n\nJe poursuis ma série monochrome avec une image prise lors d'un weekend à Londres en juin 2016. Il s'agit du Millenium Bridge qui enjambe la Tamise et qui mène notre regard directement sur la Cathédrale Saint Paul." />
-
-      <TextView
-          android:id="@+id/album_detail_date_tv"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="20dp"
-          android:layout_marginEnd="20dp"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@id/photo_detail_description_tv" />
+          tools:text="01-01-1970" />
 
       <androidx.recyclerview.widget.RecyclerView
           android:id="@+id/tracks_rcv"

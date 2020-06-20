@@ -60,7 +60,7 @@ class AlbumDetailFragment : Fragment() {
         with(view) {
             imageView = findViewById(R.id.album_detail_imv)
             titleTv = findViewById(R.id.album_detail_title_tv)
-            dateTv = findViewById(R.id.album_detail_title_tv)
+            dateTv = findViewById(R.id.album_detail_date_tv)
         }
         photosRecyclerView = view.findViewById(R.id.tracks_rcv)
 

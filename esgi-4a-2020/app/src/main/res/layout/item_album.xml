@@ -12,9 +12,9 @@
 
     <ImageView
         android:id="@+id/item_photo_imv"
-        android:layout_width="150dp"
+        android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_margin="12dp"
+        android:layout_margin="8dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         tools:src="@tools:sample/backgrounds/scenic" />
@@ -24,8 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="16sp"
+        android:textColor="@color/colorAlbumListText"
+        android:textSize="18sp"
         tools:text="Londres - Millenium Bridge" />
     <ImageView
         android:id="@+id/item_photo_imv_2"
