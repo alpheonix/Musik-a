@@ -32,6 +32,7 @@ class Notification : AppCompatActivity() {
         play_image_view.setOnClickListener {
 
             Myapp.playPause()
+
         }
     }
 }

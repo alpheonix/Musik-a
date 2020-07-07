@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
@@ -29,17 +30,29 @@ class MainActivity : AppCompatActivity() {
 
     next_image_view.setOnClickListener {
       Toast.makeText(this,"Chanson suivante",Toast.LENGTH_LONG).show()
-      Myapp.next(this)
+      if (Myapp.mediaPlayer.duration != 5963776){
+        Myapp.next(this)
+      }
+
     }
     previous_image_view.setOnClickListener {
       Toast.makeText(this,"Chanson precedente",Toast.LENGTH_LONG).show()
-
-      Myapp.previous(this)
+      if (Myapp.mediaPlayer.duration != 5963776) {
+        Myapp.previous(this)
+      }
     }
 
     play_image_view.setOnClickListener {
+Log.d("player",Myapp.mediaPlayer.duration.toString())
+      if (Myapp.mediaPlayer.duration != 5963776){
+        Myapp.playPause()
+      }
 
-      Myapp.playPause()
+      if(Myapp.mediaPlayer.isPlaying){
+        play_image_view.setImageResource(R.drawable.pause)
+      }else{
+        play_image_view.setImageResource(R.drawable.play_hera)
+      }
     }
 
   }
